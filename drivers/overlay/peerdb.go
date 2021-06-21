@@ -247,7 +247,7 @@ func (d *driver) peerDbDelete(nid, eid string, peerIP net.IP, peerIPMask net.IPM
 // in one single atomic operation. This is fundamental to guarantee consistency, and avoid that
 // new peerAdd or peerDelete gets reordered during the sandbox init.
 func (d *driver) initSandboxPeerDB(nid string) {
-	d.peerInit(nid)
+	go d.peerInit(nid)
 }
 
 type peerOperationType int32
